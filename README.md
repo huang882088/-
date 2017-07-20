@@ -350,4 +350,12 @@ fetch(url).then(response => response.json())
 .then(data => console.log(data))
 .catch(e => console.log("Oops, error", e))
  ```
- 
+ 这就是一个简单的fetch请求了， 那么我们来看看浏览器对它的支持：
+ ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/bower.png?raw=true)
+ 原生支持率并不高，幸运的是，引入下面这些 polyfill 后可以完美支持 IE8+ ：
+- 由于 IE8 是 ES3，需要引入 ES5 的 polyfill:[es5-shim, es5-sham](https://github.com/es-shims/es5-shim)
+- 引入 Promise 的 polyfill:[es6-promise](https://github.com/jakearchibald/es6-promise)
+- 引入 fetch 探测库:[fetch-detector](https://github.com/camsong/fetch-detector)
+- 引入 fetch 的 polyfill:[fetch-ie8](https://github.com/camsong/fetch-ie8)
+- 可选：如果你还使用了 jsonp，引入[fetch-jsonp](https://github.com/camsong/fetch-jsonp)
+- 可选：开启 Babel 的 runtime 模式，现在就使用 async/await
