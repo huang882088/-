@@ -1,5 +1,6 @@
 # 前端技术文档
-撰写者：<font face="黑体" color="#FF1493">司马老九</font>；时间：<font face="黑体" color="#FF1493">2017年7月11日</font>
+author：<font face="黑体" color="#FF1493">[司马老九](https://clownzoo.github.io)</font>  
+time：<font face="黑体" color="#FF1493">2017年7月11日</font>
 
 **`前言：技术栈选定将决定不再支持IE9及IE9以下版本浏览器`**  
 ## <font face="黑体" color="#FF1493">WEBSTORM</font>
