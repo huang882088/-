@@ -101,7 +101,7 @@ time：<font face="黑体" color="#FF1493">2017年7月20日</font>
 
  *以上代码均为各种文件格式的`loader`解析*
 
-* **package.json**
+* **使用打包的优势与不足**
 
 
 优点 | 缺点
