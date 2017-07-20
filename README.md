@@ -20,7 +20,7 @@
  *每个项目的根目录下面，一般都有一个package.json文件，定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。`npm install`命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。*  
 
 
-```json
+```js
 {
   "name": "hutong",
   "version": "1.0.0",
@@ -68,7 +68,7 @@
 * **Loader**  
 *Webpack本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。Loader可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过 require 来加载任何类型的模块或文件，比如 `CoffeeScript`、 `JSX`、 `LESS/SASS/SCSS` 、`IMAGE` 、`FILES`...。*  
 
-```json
+```js
 {
   "author": "",
   "license": "ISC",
@@ -145,18 +145,19 @@ export default Hello;
 const element = <h1>Hello, world!</h1>;
 //JSX语法
 ```
-`下面附上官方提供的hello world`
-```jsx
-    <div id="example"></div>
-    <script type="text/babel">
-      ReactDOM.render(
-        <h1>Hello, world!</h1>,
-        document.getElementById('example')
-      );
-    </script>
-    ```
+*下面附上官方提供的hello world*
 
-    *JSX语法可自动防范注入攻击，在默认情况下，React DOM会将所有嵌入JSX的值进行编码。这样可以有效避免`xss`攻击。*
+```jsx
+<div id="example"></div>
+<script type="text/babel">
+  ReactDOM.render(
+    <h1>Hello, world!</h1>,
+    document.getElementById('example')
+  );
+</script>
+```
+
+*JSX语法可自动防范注入攻击，在默认情况下，React DOM会将所有嵌入JSX的值进行编码。这样可以有效避免`xss`攻击。*
 
 * **React的生命周期**  
 
