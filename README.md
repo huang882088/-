@@ -1,10 +1,9 @@
 # 互童前端技术文档
-[![CircleCIStat](https://circleci.com/gh/facebook/react.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/facebook/react)
 撰写者：<font face="黑体" color="#FF1493">九</font>；时间：<font face="黑体" color="#FF1493">2017年7月11日</font>
 
 **`前言：技术栈选定将决定不再支持IE9及IE9以下版本浏览器`**  
 ## <font face="黑体" color="#FF1493">WEBSTORM</font>
-*[WebStorm](http://www.jetbrains.com/webstorm/) 是jetbrains公司旗下一款JavaScript开发工具。目前已经被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能。*
+*[WebStorm](http://www.jetbrains.com/webstorm/) 是 jetbrains 公司旗下一款JavaScript开发工具。目前已经被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能。*
 
 优点 | 缺点
 ---- |----
@@ -20,18 +19,82 @@
 
  *每个项目的根目录下面，一般都有一个package.json文件，定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。`npm install`命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。*  
 
- `附上示意图`
 
- ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/package.png?raw=true)  
+```json
+{
+  "name": "hutong",
+  "version": "1.0.0",
+  "description": "This is webpack for hutong",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --config webpack.config.js --progress --display-modules --colors --display-reason",
+    "dev": "webpack-dev-server --progress --profile --colors --hot --inline"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "react": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2"
+  }
+}
+```
 
  *上图是以`.json`形式展示，项目所依赖的包几乎在这里了*  
 
 * **Loader**  
 *Webpack本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。Loader可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过 require 来加载任何类型的模块或文件，比如 `CoffeeScript`、 `JSX`、 `LESS/SASS/SCSS` 、`IMAGE` 、`FILES`...。*  
 
- ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/loader.png?raw=true)  
+```json
+{
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9"
+  }
+}
+```
 
- *以下箭头指向均为各种文件格式的`loader`解析*
+ *以上代码均为各种文件格式的`loader`解析*
 
 * **package.json**
 
@@ -92,7 +155,8 @@ const element = <h1>Hello, world!</h1>;
       );
     </script>
     ```
-    `JSX语法可自动防范注入攻击，在默认情况下，React DOM会将所有嵌入JSX的值进行编码。这样可以有效避免xss攻击。`
+
+    *JSX语法可自动防范注入攻击，在默认情况下，React DOM会将所有嵌入JSX的值进行编码。这样可以有效避免`xss`攻击。*
 
 * **React的生命周期**  
 
