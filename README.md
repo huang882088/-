@@ -61,7 +61,7 @@
 `component 的使用在 React 里极为重要, 因为 components 的存在让计算 DOM diff 更高效。`  
 
 
-```
+```jsx
 //react创建组件
 import React, { Component } from 'react';
 class Hello extends Component {
@@ -78,12 +78,12 @@ export default Hello;
 
 * **JSX语法：**  
 *`JSX`是一种JavaScript语法扩展，（==如上代码==）在React中可以方便地用来描述UI，JSX是一种`语法糖`，粗看上去，像是在Javascript代码里直接写起了XML标签，实质上这只是一个语法糖，每一个XML标签都会被JSX转换工具转换成纯Javascript代码，当然你想直接使用纯Javascript代码写也是可以的，只是利用JSX，组件的结构和组件之间的关系看上去更加清晰。*
-```
+```jsx
 const element = <h1>Hello, world!</h1>;
 //JSX语法
 ```
 `下面附上官方提供的hello world`
-```
+```jsx
     <div id="example"></div>
     <script type="text/babel">
       ReactDOM.render(
@@ -125,7 +125,7 @@ const element = <h1>Hello, world!</h1>;
 
 *假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是：*
 
-```
+```jsx
     http://10.0.0.1/
     http://10.0.0.1/pageOne
     http://10.0.0.1/pageTwo
@@ -134,7 +134,7 @@ const element = <h1>Hello, world!</h1>;
 *当用户使用 http://10.0.0.1/about 来访问该页面时，Web 服务会接收到这个请求，然后会解析 URI 中的路径 /about，在 Web 服务的程序中，该路径对应着相应的处理逻辑，程序会把请求交给路径所对应的处理逻辑，这样就完成了一次「路由分发」，这个分发就是通过「路由」来完成的。*  
 * #### 前端路由和后端路由？  
 *前端的路由和后端的路由在实现技术上不一样，但是原理都是一样的。在 HTML5 的 history API 出现之前，前端的路由都是通过 hash 来实现的，hash 能兼容低版本的浏览器。如果我们把上面例子中提到的 3 个页面用 hash 来实现的话，它的 URI 规则中需要带上 #。*  
-```
+```jsx
   http://10.0.0.1/
   http://10.0.0.1/#/about
   http://10.0.0.1/#/concat
@@ -143,7 +143,7 @@ const element = <h1>Hello, world!</h1>;
 
   *history 是 html5 才有的新 API，可以用来操作浏览器的 session history (会话历史)。基于 history 来实现的路由可以和最初的例子中提到的路径规则一样。*
 
-  ```
+  ```jsx
 http://10.0.0.1/
 http://10.0.0.1/about
 http://10.0.0.1/concat
@@ -165,7 +165,7 @@ http://10.0.0.1/concat
 ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/redux.png?raw=true)
 
 当使用普通对象来描述应用的 state 时。例如，todo 应用的 state 可能长这样：  
-```
+```json
 {
   todos: [{
     text: 'Eat food',
@@ -182,14 +182,14 @@ http://10.0.0.1/concat
 这个对象就像 `Model`，区别是它并没有 setter（修改器方法）。因此其它的代码不能随意修复它，造成难以复现的 bug。
 
 要想更新 state 中的数据，你需要发起一个 action。Action 就是一个普通 JavaScript 对象（注意到没，这儿没有任何魔法？）用来描述发生了什么。下面是一些 `action` 的示例：  
-```
+```json
 { type: 'ADD_TODO', text: 'Go to swimming pool' }
 { type: 'TOGGLE_TODO', index: 1 }
 { type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }
 ```
 强制使用 action 来描述所有变化带来的好处是可以清晰地知道应用中到底发生了什么。如果一些东西改变了，就可以知道为什么变。`action` 就像是描述发生了什么的面包屑。最终，为了把 `action` 和 `state` 串起来，开发一些函数，这就是 `reducer`。再次地，没有任何魔法，`reducer` 只是一个接收 `state` 和 `action`，并返回新的 `state` 的函数。 对于大的应用来说，可能很难开发这样的函数，所以我们编写很多小函数来分别管理 `state` 的一部分：  
 
-```
+```jsx
 function visibilityFilter(state = 'SHOW_ALL', action) {
   if (action.type === 'SET_VISIBILITY_FILTER') {
     return action.filter;
@@ -214,7 +214,7 @@ function todos(state = [], action) {
 }
 ```
 再开发一个 reducer 调用这两个 `reducer`，进而来管理整个应用的 `state`：  
-```
+```jsx
 function todoApp(state = {}, action) {
   return {
     todos: todos(state.todos, action),
