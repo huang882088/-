@@ -312,8 +312,8 @@ function todoApp(state = {}, action) {
     - **State 是只读的**：*唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。*
     - **使用纯函数来执行修改**：*为了描述 action 如何改变 state tree ，你需要编写 reducers。*
 
-## <font face="黑体" color="#FF1493">Fetch API</font>
-*Fetch API通俗点说就是一个请求API,，它被定义在`BOM`的`window`对象中，提供了一个用于获取资源（包括跨网络）的接口。任何使用过的人似乎都很熟悉XMLHttpRequest，但新的API提供了更强大和灵活的功能集，你可以用它来发起对远程资源的请求。 该方法返回的是一个`ES6`的`Promise`对象，让你能够对请求的返回结果进行检索。 它是 `W3C` 的正式标准 。*
+## <font face="黑体" color="#FF1493">Fetch</font>
+*Fetch通俗点说就是一个请求API,，它被定义在`BOM`的`window`对象中，提供了一个用于获取资源（包括跨网络）的接口。任何使用过的人似乎都很熟悉XMLHttpRequest，但新的API提供了更强大和灵活的功能集，你可以用它来发起对远程资源的请求。 该方法返回的是一个`ES6`的`Promise`对象，让你能够对请求的返回结果进行检索。 它是 `W3C` 的正式标准 。*
 * 为什么是Fetch？  
 
 *XMLHttpRequest 是一个设计粗糙的 API，不符合关注分离（Separation of Concerns）的原则，配置和调用方式非常混乱，而且基于事件的异步模型写起来也没有现代的 Promise，generator/yield，async/await 友好。*
@@ -351,7 +351,8 @@ fetch(url).then(response => response.json())
 .catch(e => console.log("Oops, error", e))
  ```
  这就是一个简单的fetch请求了， 那么我们来看看浏览器对它的支持：
- ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/bower.png?raw=true)
+ ![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/bower.png?raw=true)  
+
  原生支持率并不高，幸运的是，引入下面这些 polyfill 后可以完美支持 IE8+ ：
 - 由于 IE8 是 ES3，需要引入 ES5 的 polyfill:[es5-shim, es5-sham](https://github.com/es-shims/es5-shim)
 - 引入 Promise 的 polyfill:[es6-promise](https://github.com/jakearchibald/es6-promise)
