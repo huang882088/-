@@ -1,6 +1,6 @@
 # 前端技术文档
 author：<font face="黑体" color="#FF1493">[司马老九](https://clownzoo.github.io)</font>  
-time：<font face="黑体" color="#FF1493">2017年7月11日</font>
+time：<font face="黑体" color="#FF1493">2017年7月20日</font>
 
 **`前言：技术栈选定将决定不再支持IE9及IE9以下版本浏览器`**  
 
@@ -124,7 +124,7 @@ time：<font face="黑体" color="#FF1493">2017年7月11日</font>
 
 *为什么通过这多一层的VirtualDOM操作就能更快呢？这是因为React有个`diff`算法，更新`Virtual DOM`并不保证马上影响真实的`DOM`，React会等到事件循环结束，然后利用这个diff算法，通过当前新的`Dom`表述与之前的作比较，计算出最小的步骤更新真实的`DOM`。*  
 
- 
+![image](https://github.com/Clownzoo/htong/blob/master/mardownImg/diff.png?raw=true)
 * **Components 组件**
 *在DOM树上的节点被称为元素，在这里则不同，Virtual DOM上称为commponent。Virtual DOM的节点就是一个完整抽象的组件，它是由commponents组成。*
 
@@ -311,3 +311,43 @@ function todoApp(state = {}, action) {
     - **单一数据源**：*整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。*
     - **State 是只读的**：*唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。*
     - **使用纯函数来执行修改**：*为了描述 action 如何改变 state tree ，你需要编写 reducers。*
+
+## <font face="黑体" color="#FF1493">Fetch API</font>
+*Fetch API通俗点说就是一个请求API,，它被定义在`BOM`的`window`对象中，提供了一个用于获取资源（包括跨网络）的接口。任何使用过的人似乎都很熟悉XMLHttpRequest，但新的API提供了更强大和灵活的功能集，你可以用它来发起对远程资源的请求。 该方法返回的是一个`ES6`的`Promise`对象，让你能够对请求的返回结果进行检索。 它是 `W3C` 的正式标准 。*
+* 为什么是Fetch？  
+
+*XMLHttpRequest 是一个设计粗糙的 API，不符合关注分离（Separation of Concerns）的原则，配置和调用方式非常混乱，而且基于事件的异步模型写起来也没有现代的 Promise，generator/yield，async/await 友好。*
+
+Fetch 的出现就是为了解决 XHR 的问题，拿例子说明：
+
+使用 XHR 发送一个 json 请求一般是这样：
+```js
+var xhr = new XMLHttpRequest();
+xhr.open('GET', url);
+xhr.responseType = 'json';
+xhr.onload = function() {
+  console.log(xhr.response);
+};
+xhr.onerror = function() {
+  console.log("Oops, error");
+};
+xhr.send();
+```
+使用 Fetch 后，顿时看起来好一点
+
+```js
+fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+}).catch(function(e) {
+  console.log("Oops, error");
+});
+```
+在配合 ES6 的 写法 后：
+```js
+fetch(url).then(response => response.json())
+.then(data => console.log(data))
+.catch(e => console.log("Oops, error", e))
+ ```
+ 
